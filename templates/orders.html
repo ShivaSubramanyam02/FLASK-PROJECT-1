@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orders</title>
+</head>
+<body>
+    <h1>📦 All Orders</h1>
+    <a href="/">⬅️ Back</a>
+    <ul>
+        {% for order_id, order in orders.items() %}
+            <li>
+                <strong>Order ID:</strong> {{ order_id }} |
+                <strong>Customer:</strong> {{ order['customer'] }} |
+                <strong>Status:</strong> {{ order['status'] }} |
+                <strong>Total:</strong> ₹{{ order['total_price'] }} |
+                <strong>Discount:</strong> {{ order['discount'] }}% |
+                <strong>Final:</strong> ₹{{ order['final_price'] }}
+
+                <form method="POST" action="/update_status/{{ order_id }}">
+                    <label>Update Status:</label>
+                    <select name="status">
+                        <option value="received">Received</option>
+                        <option value="preparing">Preparing</option>
+                        <option value="delivered">Delivered</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                    <input type="submit" value="Update">
+                </form>
+
+                <a href="/invoice/{{ order_id }}">🧾 View Invoice</a>
+            </li><br>
+        {% else %}
+            <li>No orders found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

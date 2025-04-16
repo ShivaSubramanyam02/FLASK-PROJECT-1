@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Dish</title>
+</head>
+<body>
+    <h1>➕ Add a New Dish</h1>
+    <a href="/">⬅️ Back</a>
+    <form method="POST">
+        <label>Dish ID:</label><br>
+        <input type="text" name="dish_id" required><br><br>
+
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <label>Price (₹):</label><br>
+        <input type="number" name="price" step="0.01" required><br><br>
+
+        <label>Available:</label>
+        <input type="checkbox" name="available"><br><br>
+
+        <input type="submit" value="Add Dish">
+    </form>
+</body>
+</html>
+

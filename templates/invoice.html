@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice</title>
+</head>
+<body>
+    <h1>🧾 Invoice for Order {{ order_id }}</h1>
+    <a href="/">⬅️ Back</a>
+    <p><strong>Customer:</strong> {{ order['customer'] }}</p>
+    <p><strong>Status:</strong> {{ order['status'] }}</p>
+
+    <h3>Dishes Ordered:</h3>
+    <ul>
+        {% for dish in order['dishes'].values() %}
+            <li>{{ dish['name'] }} - ₹{{ dish['price'] }}</li>
+        {% endfor %}
+    </ul>
+
+    <p><strong>Total Price:</strong> ₹{{ order['total_price'] }}</p>
+    <p><strong>Discount:</strong> {{ order['discount'] }}%</p>
+    <p><strong>Final Price:</strong> ₹{{ order['final_price'] }}</p>
+</body>
+</html>

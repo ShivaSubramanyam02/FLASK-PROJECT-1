@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+</head>
+<body>
+    <h1>📋 Menu</h1>
+    <a href="/">⬅️ Back</a>
+    <ul>
+        {% for dish_id, dish in menu.items() %}
+            <li>
+                <strong>{{ dish['name'] }}</strong> - ₹{{ dish['price'] }} -
+                {{ "Available" if dish['available'] else "Not Available" }}
+                [<a href="/remove_dish/{{ dish_id }}">❌ Remove</a>]
+            </li>
+        {% else %}
+            <li>No dishes found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

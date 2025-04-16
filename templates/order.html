@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Take Order</title>
+</head>
+<body>
+    <h1>🛒 Take Order</h1>
+    <a href="/">⬅️ Back</a>
+    <form method="POST">
+        <label>Customer Name:</label><br>
+        <input type="text" name="customer_name" required><br><br>
+
+        <label>Select Dishes:</label><br>
+        {% for dish_id, dish in menu.items() %}
+            {% if dish['available'] %}
+                <input type="checkbox" name="dish_ids" value="{{ dish_id }}">
+                {{ dish['name'] }} - ₹{{ dish['price'] }}<br>
+            {% endif %}
+        {% else %}
+            <p>No available dishes.</p>
+        {% endfor %}
+        <br>
+
+        <label>Coupon Code (optional):</label><br>
+        <input type="text" name="coupon_code"><br><br>
+
+        <input type="submit" value="Place Order">
+    </form>
+</body>
+</html>
